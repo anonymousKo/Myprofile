@@ -1,1 +1,3 @@
-# shadowrocket-conf
+# profile-backup
+shadowrocket
+switchOmega
