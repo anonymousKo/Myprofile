@@ -6,4 +6,4 @@ jobs:
     - name: curl
       uses: wei/curl@master
       with:
-        args: https://httpbin.org/get
+        args: -0 1.txt https://httpbin.org/get
