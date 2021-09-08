@@ -1,3 +1,7 @@
+If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {
+	Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`" $PSCommandArgs" -Verb RunAs
+	Exit
+}
 $Bloatware = @(
 
         #Unnecessary Windows 10 AppX Apps
@@ -11,7 +15,7 @@ $Bloatware = @(
         "Microsoft.NetworkSpeedTest"
         "Microsoft.News"
         "Microsoft.Office.Lens"
-        #"Microsoft.Office.OneNote"
+        "Microsoft.Office.OneNote"
         "Microsoft.Office.Sway"
         "Microsoft.OneConnect"
         "Microsoft.People"
