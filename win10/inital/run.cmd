@@ -1,0 +1,1 @@
+ powershell.exe -NoProfile -File Win10.ps1 -include win10_initial.psm1 -preset Default.preset

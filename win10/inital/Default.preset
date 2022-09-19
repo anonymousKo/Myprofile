@@ -13,4 +13,5 @@ RequireAdmin
 # Disable-DataCollect
 # Disable-Defender
 # Remove-Apps
-Enable-ActivityHistory
+#Enable-ActivityHistory
+Hide-UserDirectory

@@ -37,6 +37,7 @@ function Disable-DataCollect{
 }
 	
 function Disable-Defender{
+	Write-Output "Disable Defender"
 	Set-MpPreference -DisableRealtimeMonitoring $true
 }
 function Enable-Defender{
@@ -134,6 +135,21 @@ Function Enable-ActivityHistory {
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -ErrorAction SilentlyContinue
 	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -ErrorAction SilentlyContinue
+}
+
+Function Hide-UserDirectory {
+	$Folders = @(
+        #"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{0ddd015d-b06c-45d5-8c4c-f59713854639}\PropertyBag" #picture
+		"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{35286a68-3c57-41a1-bbb1-0eae73d76c95}\PropertyBag" #video
+		#"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{7d83ee9b-2244-4e70-b1f5-5393042af1e4}\PropertyBag" #download
+		#"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{f42ee2d3-909f-4907-8871-4c22fc0bf756}\PropertyBag" #document
+		"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}\PropertyBag" #3D
+    )
+	foreach ($Folder in $Folders) {
+        Set-ItemProperty -Path $Folder -Name ThisPCPolicy -Value Hide -Force
+        Write-Output "Trying to hide $Folder."
+    }
+	
 }
 
 # Export functions
