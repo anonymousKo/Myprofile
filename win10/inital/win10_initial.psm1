@@ -149,7 +149,13 @@ Function Hide-UserDirectory {
         Set-ItemProperty -Path $Folder -Name ThisPCPolicy -Value Hide -Force
         Write-Output "Trying to hide $Folder."
     }
-	
+}
+
+Function Disable-UAC{
+    Write-Output "Disable-UAC."
+    Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
+    Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False #firewall
+    Get-NetFirewallProfile | Format-Table Name, Enabled
 }
 
 # Export functions

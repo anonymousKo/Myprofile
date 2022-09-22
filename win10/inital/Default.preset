@@ -8,10 +8,11 @@
 ### Require administrator privileges ###
 RequireAdmin
 
-# Disable-WebSearch
-# Disable-Xbox
-# Disable-DataCollect
-# Disable-Defender
-# Remove-Apps
-#Enable-ActivityHistory
+Disable-WebSearch
+Disable-Xbox
+Disable-DataCollect
+Disable-Defender
+Remove-Apps
+Enable-ActivityHistory
 Hide-UserDirectory
+Disable-UAC
