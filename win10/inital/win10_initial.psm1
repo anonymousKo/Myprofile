@@ -158,5 +158,10 @@ Function Disable-UAC{
     Get-NetFirewallProfile | Format-Table Name, Enabled
 }
 
+function Optimize-Display{
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name ShellFeedsTaskbarViewMode -Value 2
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name SearchboxTaskbarMode -Value 1
+}
+
 # Export functions
 Export-ModuleMember -Function *
